@@ -1,0 +1,45 @@
+
+<div class="container">
+  <h1 *ngIf="region" class="text-center" style="color: whitesmoke;margin: 40px 0px">
+    Countries of {{region | uppercase}} region
+  </h1>
+  <h1 *ngIf="currency" class="text-center" style="color: whitesmoke;margin: 40px 0px">
+      Countries using {{currency | uppercase}} currency
+  </h1>
+  <h1 *ngIf="language" class="text-center" style="color: whitesmoke;margin: 40px 0px">
+      {{language | uppercase}} speaking countries
+  </h1>
+  <a (click)=goback() class="btn btn-success" style="color:white">Go Back</a><br><br>
+
+  <div class="row" >
+         
+
+     <div *ngFor="let name of countries " class="col-md-4">
+
+         <div class="card text-center" style="margin-bottom: 30px;box-shadow: -2px -1px 16px -3px rgba(255,255,255,1);">
+               <img src={{name.flag}} alt=""  class="img-fluid"><br>
+               <div><h4>{{name.name }}</h4></div><hr>
+               <div>Capital : {{name.capital}}</div><hr>
+               <div>Population : {{name.population}}</div><hr>
+               <div>Timezone : {{name.timezones}}</div><hr>
+               <div>
+                 Currency : <span *ngFor="let i of name.currencies"><a (click)="currencyToastr(i.name)" [routerLink]="['/countries/currency/',i.code]">{{i.name}}</a><br></span>
+               </div><hr>
+               <div>
+                 Languages : <span *ngFor="let j of name.languages"><a (click)="langToastr(j.name)" [routerLink]="['/countries/lang/',j.iso639_1]">{{j.name}}</a><br></span>
+               </div><hr>
+               <div>Subregion : {{name.subregion}}</div><hr>
+               <a [routerLink]="['/country/',name.alpha3Code]" href="" class="btn btn-primary">Details</a>
+         </div>  
+         
+
+       </div>      
+
+  </div>
+       
+</div>
+
+
+
+
+

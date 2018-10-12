@@ -1,0 +1,39 @@
+<div class="container">
+  <div *ngIf="countryDetails">
+    <h1 class="text-center" style="color: white;margin: 30px 0px">{{countryDetails.name | uppercase}} detailed view</h1>
+          
+    <div class="row ">
+      <div class="col-md-6" style="margin: auto">
+          <div class="card" style="box-shadow: -2px -1px 16px -3px rgba(255,255,255,1);">
+              <div class="card-body text-center">
+                <span class="card-text ">
+                  <img src={{countryDetails.flag}} alt="" style="width:500px" class="img-fluid"><br><br>
+                  <h1>{{countryDetails.name}}</h1><hr>
+                  <div>Native Name : {{countryDetails.nativeName}}</div><hr>
+                  <div>Capital : {{countryDetails.capital}}</div><hr>
+                  <div>Population : {{countryDetails.population}}</div><hr>
+                  <div>Region : {{countryDetails.region}}</div><hr>
+                  <div>SubRegion : {{countryDetails.subregion}}</div><hr>
+                  <div>Demonym : {{countryDetails.demonym}}</div><hr>
+                  <div>Timezone : {{countryDetails.timezones}}</div><hr>
+                  <div>
+                      Currency : <span *ngFor="let i of countryDetails.currencies"><a [routerLink]="['/countries/currency/',i.code]">{{i.name}}</a><br></span>
+                  </div><hr>
+                  <div>
+                      Languages : <span *ngFor="let j of countryDetails.languages"><a [routerLink]="['/countries/lang/',j.iso639_1]">{{j.name}}</a><br></span>
+                  </div><hr>
+                  <a [routerLink]="['/home']" class="btn btn-primary"><b>Home</b></a>
+                </span>
+              </div>
+            </div>
+      </div>
+    </div>
+    
+    
+  </div>
+</div>
+
+
+
+
+
